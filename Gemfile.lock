@@ -25,7 +25,9 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    archive-tar-minitar (0.5.2)
     arel (4.0.2)
+    awesome_print (1.2.0)
     bootstrap-sass (2.3.2.0)
       sass (~> 3.2)
     builder (3.1.4)
@@ -48,7 +50,12 @@ GEM
       execjs
     coffee-script-source (1.7.1)
     diff-lcs (1.2.5)
+    docker-api (1.13.2)
+      archive-tar-minitar
+      excon (>= 0.38.0)
+      json
     erubis (2.7.0)
+    excon (0.39.5)
     execjs (2.2.1)
     ffi (1.9.3)
     formatador (0.2.5)
@@ -225,10 +232,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   bootstrap-sass (= 2.3.2.0)
   capybara (= 2.1.0)
   childprocess (= 0.3.6)
   coffee-rails (= 4.0.1)
+  docker-api
   guard-rspec (= 2.5.0)
   guard-spork (= 1.5.0)
   jbuilder (= 1.0.2)

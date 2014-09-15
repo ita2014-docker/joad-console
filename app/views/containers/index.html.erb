@@ -1,0 +1,27 @@
+<h1>コンテナ一覧</h1>
+
+<table>
+  <tr>
+    <th>コンテナID</th>
+    <th>イメージ</th>
+    <th>コマンド</th>
+    <th>稼動状態</th>
+    <th>IPアドレス</th>
+    <th>ポートフォワード</th>
+    <th>作成日</th>
+  </tr>
+
+<% @containers.each do |container| %>
+  <tr>
+    <td><%= container.get_short_id %></td>
+    <td><%= container.get_image_name %></td>
+    <td><%= container.get_command %></td>
+    <td><%= container.get_state %></td>
+    <td><%= container.get_container_ipaddr %></td>
+    <td><%= container.get_port_forwarding %></td>
+    <td><%= container.get_created %></td>
+  </tr>
+
+<% end %>
+
+</table>
