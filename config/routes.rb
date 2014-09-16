@@ -1,11 +1,10 @@
 JoadConsole::Application.routes.draw do
   get "containers/index"
+  post "containers/index"
   get "containers/show"
-  get "containers/create"
-  get "containers/remove"
+  post "containers/create"
   get "images/index"
   get "images/show"
-  get "images/remove"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

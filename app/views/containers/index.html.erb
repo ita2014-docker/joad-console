@@ -1,7 +1,10 @@
 <h1>コンテナ一覧</h1>
 
+<%= form_tag('/containers/index') do %>
+
 <table>
   <tr>
+    <th>&nbsp;</th>
     <th>コンテナID</th>
     <th>イメージ</th>
     <th>コマンド</th>
@@ -13,6 +16,9 @@
 
 <% @containers.each do |container| %>
   <tr>
+    <td>
+      <%= check_box_tag 'containers[id][]', container.get_short_id, false, {} %>
+    </td>
     <td><%= container.get_short_id %></td>
     <td><%= container.get_image_name %></td>
     <td><%= container.get_command %></td>
@@ -23,5 +29,11 @@
   </tr>
 
 <% end %>
+
+<%= submit_tag("起動", :name => "start") %>
+<%= submit_tag("停止", :name => "stop") %>
+<%= submit_tag("削除", :name => "rm") %>
+
+<% end -%>
 
 </table>

@@ -53,6 +53,10 @@ class JoadContainer < Docker::Container
     port_forwarding
   end
 
+  def get_port_bindings
+    json["HostConfig"]["PortBindings"]
+  end
+
   def get_created
     Time.at(info["Created"])
   end
