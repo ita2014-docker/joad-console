@@ -27,7 +27,7 @@ class JoadContainer < Docker::Container
   end
 
   def get_command
-    info["Command"]
+    json["Config"]["Cmd"].join(" ")
   end
 
   def is_running?

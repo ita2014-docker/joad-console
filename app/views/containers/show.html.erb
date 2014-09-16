@@ -11,27 +11,30 @@
   </tr>
   <tr>
     <td>イメージ</td>
-    <td><%= @container.get_image_name %></td>
+    <td><%= simple_format(@container.get_image_name) %></td>
   </tr>
   <tr>
     <td>コマンド</td>
-    <td><%= @container.get_command %></td>
+    <td><%= simple_format(@container.get_command) %></td>
   </tr>
   <tr>
+    <td>環境変数</td>
+    <td><%= simple_format(@container.json["Config"]["Env"].join("<BR>")) %></td>
+  <tr>
     <td>稼動状態</td>
-    <td><%= @container.get_state %></td>
+    <td><%= simple_format(@container.get_state) %></td>
   </tr>
   <tr>
     <td>IPアドレス</td>
-    <td><%= @container.get_container_ipaddr %></td>
+    <td><%= simple_format(@container.get_container_ipaddr) %></td>
   </tr>
   <tr>
     <td>ポートフォワード</td>
-    <td><%= @container.get_port_forwarding %></td>
+    <td><%= simple_format(@container.get_port_forwarding) %></td>
   </tr>
   <tr>
     <td>作成日</td>
-    <td><%= @container.get_created %></td>
+    <td><%= simple_format(@container.get_created) %></td>
   </tr>
 </table>
 
