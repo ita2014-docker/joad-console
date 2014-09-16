@@ -1,2 +1,62 @@
-<h1>Containers#show</h1>
-<p>Find me in app/views/containers/show.html.erb</p>
+<%= link_to "コンテナ一覧に戻る", :action => 'index' %>
+
+<hr>
+
+<h2>コンテナ情報</h2>
+
+<table>
+  <tr>
+    <td>コンテナID</td>
+    <td><%= @container.get_short_id %></td>
+  </tr>
+  <tr>
+    <td>イメージ</td>
+    <td><%= @container.get_image_name %></td>
+  </tr>
+  <tr>
+    <td>コマンド</td>
+    <td><%= @container.get_command %></td>
+  </tr>
+  <tr>
+    <td>稼動状態</td>
+    <td><%= @container.get_state %></td>
+  </tr>
+  <tr>
+    <td>IPアドレス</td>
+    <td><%= @container.get_container_ipaddr %></td>
+  </tr>
+  <tr>
+    <td>ポートフォワード</td>
+    <td><%= @container.get_port_forwarding %></td>
+  </tr>
+  <tr>
+    <td>作成日</td>
+    <td><%= @container.get_created %></td>
+  </tr>
+</table>
+
+<h2>コンテナのプロセス状態</h2>
+
+<table>
+  <tr>
+    <th>ユーザーID</th>
+    <th>プロセスID</th>
+    <th>親プロセスID</th>
+    <th>プロセッサ使用率</th>
+    <th>開始時間</th>
+    <th>CPU時間</th>
+    <th>実行コマンド</th>
+  </tr>
+
+  <% @container.top.each do |t| %>
+    <tr>
+      <td><%= t["UID"] %></td>
+      <td><%= t["PID"] %></td>
+      <td><%= t["PPID"] %></td>
+      <td><%= t["C"] %></td>
+      <td><%= t["STIME"] %></td>
+      <td><%= t["TIME"] %></td>
+      <td><%= t["CMD"] %></td>
+    </tr>
+  <% end %>
+</table>

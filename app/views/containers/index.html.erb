@@ -1,3 +1,8 @@
+<%= link_to "イメージ一覧", :controller => "images", :action => "index" %>
+<%= link_to "コンテナ一覧", :controller => "containers", :action => "index" %>
+
+<hr>
+
 <h1>コンテナ一覧</h1>
 
 <%= form_tag('/containers/index') do %>
@@ -12,6 +17,7 @@
     <th>IPアドレス</th>
     <th>ポートフォワード</th>
     <th>作成日</th>
+    <th>&nbsp;</th>
   </tr>
 
 <% @containers.each do |container| %>
@@ -26,6 +32,7 @@
     <td><%= container.get_container_ipaddr %></td>
     <td><%= container.get_port_forwarding %></td>
     <td><%= container.get_created %></td>
+    <td><%= link_to "詳細", :action => "show", :id => container.get_short_id %></td>
   </tr>
 
 <% end %>

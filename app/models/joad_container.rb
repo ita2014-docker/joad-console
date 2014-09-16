@@ -44,12 +44,16 @@ class JoadContainer < Docker::Container
 
   def get_port_forwarding
     port_forwarding = ""
-    info["Ports"].each do |port|
-      if port_forwarding != ""
-        port_forwarding = "<BR>" + port_forwarding
+    if json["NetworkSettings"]["Ports"]
+      ports = json["NetworkSettings"]["Ports"]
+      ports.keys.each do |port|
+        if port_forwarding != ""
+          port_forwarding = "<BR>" + port_forwarding
+        end
+        port_forwarding += ports[port][0]["HostPort"] + " -> " + port
       end
-      port_forwarding += port["PublicPort"].to_s + " -> " + port["PrivatePort"].to_s + "/" + port["Type"]
     end
+
     port_forwarding
   end
 
@@ -58,6 +62,10 @@ class JoadContainer < Docker::Container
   end
 
   def get_created
-    Time.at(info["Created"])
+    if info["Created"].kind_of?(Integer)
+      Time.at(info["Created"]) if info["Created"]
+    else
+      info["Created"]
+    end
   end
 end
