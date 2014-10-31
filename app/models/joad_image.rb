@@ -22,11 +22,11 @@ class JoadImage < Docker::Image
     id[0...12]
   end
 
-  def get_tag
+  def get_repository
     info["RepoTags"][0].split(":")[0]
   end
 
-  def get_repository
+  def get_tag
     info["RepoTags"][0].split(":")[1]
   end
 
