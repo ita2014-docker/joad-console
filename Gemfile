@@ -11,10 +11,7 @@ gem 'sprockets', '2.11.0'
 gem 'docker-api'
 gem 'awesome_print'
 
-# Use sqlite3 as the database for Active Record
-#gem 'sqlite3'
 group :development, :test do
-  gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.13.1'
   gem 'guard-rspec', '2.5.0'
   gem 'spork-rails', '4.0.0'
