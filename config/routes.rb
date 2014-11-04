@@ -1,4 +1,7 @@
 JoadConsole::Application.routes.draw do
+  get "home/index"
+  root 'home#index'
+
   get "containers/index"
   post "containers/index"
   get "containers/show"
