@@ -5,7 +5,7 @@ class JoadImage
 
   class << self
     def all
-      Docker::Image.all.map {|i| new i }
+      Docker::Image.all.map {|i| new(i) }
     end
   end
 
