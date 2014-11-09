@@ -1,40 +1,25 @@
-class JoadImage < Docker::Image
-  include ActiveModel::Validations
-  include ActiveModel::Conversion
-  extend ActiveModel::Naming
-  extend ActiveModel::Translation
+class JoadImage
+  include ActiveModel::Model
 
-  def persisted?; false; end
+  attr_reader :id, :size, :created, :repo_tags
 
-  def attributes=(attributes = {})
-    if attributes
-      attributes.each do |name, value|
-        send "#{name}=", value
-      end
+  class << self
+    def all
+      Docker::Image.all.map {|i| new i }
     end
   end
-   
-  def attributes
-    Hash[instance_variable_names.map{|v| [v[1..-1], instance_variable_get(v)]}]
+
+  def initialize(docker_image)
+    @id = docker_image.id
+    @size = docker_image.info['VirtualSize']
+    @created = Time.at(docker_image.info['Created'])
+    @repo_tags = docker_image.info['RepoTags'].map do |rt|
+      repo, tag = rt.split(':')
+      { repo: repo, tag: tag }
+    end
   end
 
-  def get_short_id
-    id[0...12]
-  end
-
-  def get_repository
-    info["RepoTags"][0].split(":")[0]
-  end
-
-  def get_tag
-    info["RepoTags"][0].split(":")[1]
-  end
-
-  def get_size
-    info["VirtualSize"]
-  end
-
-  def get_created
-    Time.at(info["Created"])
+  def short_id
+    @id[0...12]
   end
 end
