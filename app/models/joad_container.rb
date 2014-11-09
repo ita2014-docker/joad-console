@@ -1,3 +1,5 @@
+require 'docker'
+
 class JoadContainer
   include ActiveModel::Model
 
@@ -6,10 +8,6 @@ class JoadContainer
   class << self
     def all
       Docker::Container.all(all: true).map {|c| new(c) }
-    end
-
-    def get(id)
-      new(Docker::Container.get(id))
     end
   end
 
@@ -25,5 +23,9 @@ class JoadContainer
 
   def short_id
     @id[0...12]
+  end
+
+  def is_running?
+    @running
   end
 end

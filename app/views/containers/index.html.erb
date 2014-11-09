@@ -5,11 +5,8 @@
 
 <h1>コンテナ一覧</h1>
 
-<%= form_tag('/containers/index') do %>
-
 <table>
   <tr>
-    <th>&nbsp;</th>
     <th>コンテナID</th>
     <th>イメージ</th>
     <th>コマンド</th>
@@ -19,28 +16,16 @@
     <th>作成日</th>
     <th>&nbsp;</th>
   </tr>
-
-<% @containers.each do |container| %>
+<%- @containers.each do |container| %>
   <tr>
-    <td>
-      <%= check_box_tag 'containers[id][]', container.short_id, false, {} %>
-    </td>
     <td><%= container.short_id %></td>
     <td><%= container.image %></td>
     <td><%= container.command %></td>
-    <td><%= container.running %></td>
+    <td><%= container.is_running? %></td>
     <td><%= container.ip %></td>
     <td><%= container.ports %></td>
     <td><%= container.created %></td>
-    <td><%= link_to "詳細", :action => "show", :id => container.short_id %></td>
+    <td><%= link_to "詳細", containers_show_path(id: container.short_id) %></td>
   </tr>
-
-<% end %>
-
-<%= submit_tag("起動", :name => "start") %>
-<%= submit_tag("停止", :name => "stop") %>
-<%= submit_tag("削除", :name => "rm") %>
-
-<% end -%>
-
+<%- end %>
 </table>

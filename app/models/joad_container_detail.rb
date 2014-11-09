@@ -1,7 +1,9 @@
+require 'docker'
+
 class JoadContainerDetail
   include ActiveModel::Model
 
-  attr_reader :id, :image, :command, :env, :running, :ip, :ports, :created, :top
+  attr_reader :origin, :id, :image, :command, :env, :running, :ip, :ports, :created, :top
 
   class << self
     def get(id)
@@ -10,6 +12,7 @@ class JoadContainerDetail
   end
 
   def initialize(docker_container)
+    @origin = docker_container
     @id = docker_container.id
     @image = docker_container.info['Config']['Image']
     @command = docker_container.info['Config']['Cmd']
@@ -18,10 +21,30 @@ class JoadContainerDetail
     @ip = docker_container.info['NetworkSettings']['IPAddress']
     @ports = docker_container.info['NetworkSettings']['Ports']
     @created = docker_container.info['Created']
-    @top = docker_container.top
   end
 
   def short_id
     @id[0...12]
+  end
+
+  def is_running?
+    @running
+  end
+
+  def top
+    is_running? ? @origin.top : []
+  end
+
+  def start
+    @origin.start unless is_running?
+  end
+
+  def stop
+    @origin.stop if is_running?
+  end
+
+  def delete
+    stop
+    @origin.remove
   end
 end

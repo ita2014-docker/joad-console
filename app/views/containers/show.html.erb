@@ -4,6 +4,10 @@
 
 <h2>コンテナ情報</h2>
 
+<%= button_to '開始', containers_start_path, method: :put %>
+<%= button_to '停止', containers_stop_path, method: :put %>
+<%= button_to '削除', containers_delete_path, method: :delete %>
+
 <table>
   <tr>
     <td>コンテナID</td>
@@ -46,12 +50,11 @@
     <th>ユーザー</th>
     <th>実行コマンド</th>
   </tr>
-
-  <% @container.top.each do |t| %>
-    <tr>
-      <td><%= t["PID"] %></td>
-      <td><%= t["USER"] %></td>
-      <td><%= t["COMMAND"] %></td>
-    </tr>
-  <% end %>
+<%- @container.top.each do |t| %>
+  <tr>
+    <td><%= t["PID"] %></td>
+    <td><%= t["USER"] %></td>
+    <td><%= t["COMMAND"] %></td>
+  </tr>
+<%- end %>
 </table>

@@ -1,3 +1,5 @@
+require 'docker'
+
 class JoadImage
   include ActiveModel::Model
 
