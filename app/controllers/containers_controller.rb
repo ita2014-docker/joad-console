@@ -20,12 +20,12 @@ class ContainersController < ApplicationController
       end
     end
 
-    @containers = JoadContainer.all("all" => true)
+    @containers = JoadContainer.all
     render :action => 'index.html.erb'
   end
 
   def show
-    @container = JoadContainer.get(params["id"])
+    @container = JoadContainerDetail.get(params["id"])
     render :action => 'show.html.erb'
   end
 end

@@ -23,16 +23,16 @@
 <% @containers.each do |container| %>
   <tr>
     <td>
-      <%= check_box_tag 'containers[id][]', container.get_short_id, false, {} %>
+      <%= check_box_tag 'containers[id][]', container.short_id, false, {} %>
     </td>
-    <td><%= container.get_short_id %></td>
-    <td><%= container.get_image_name %></td>
-    <td><%= container.get_command %></td>
-    <td><%= container.get_state %></td>
-    <td><%= container.get_container_ipaddr %></td>
-    <td><%= container.get_port_forwarding %></td>
-    <td><%= container.get_created %></td>
-    <td><%= link_to "詳細", :action => "show", :id => container.get_short_id %></td>
+    <td><%= container.short_id %></td>
+    <td><%= container.image %></td>
+    <td><%= container.command %></td>
+    <td><%= container.running %></td>
+    <td><%= container.ip %></td>
+    <td><%= container.ports %></td>
+    <td><%= container.created %></td>
+    <td><%= link_to "詳細", :action => "show", :id => container.short_id %></td>
   </tr>
 
 <% end %>
