@@ -19,9 +19,9 @@ class ContainersController < ApplicationController
     redirect_to containers_show_path(id: params['id'])
   end
 
-  def delete
+  def remove
     c = JoadContainerDetail.get(params['id'])
-    c.delete
+    c.remove
     redirect_to containers_index_path
   end
 end

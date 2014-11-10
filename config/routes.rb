@@ -4,9 +4,9 @@ JoadConsole::Application.routes.draw do
   controller :containers do
     get 'containers' => :index, as: :containers_index
     get 'containers/:id' => :show, as: :containers_show
-    put 'containers/:id/start' => :start, as: :containers_start
-    put 'containers/:id/stop' => :stop, as: :containers_stop
-    delete 'containers/:id/delete' => :delete, as: :containers_delete
+    post 'containers/:id/start' => :start, as: :containers_start
+    post 'containers/:id/stop' => :stop, as: :containers_stop
+    delete 'containers/:id/remove' => :remove, as: :containers_remove
   end
 
   controller :images do

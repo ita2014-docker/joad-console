@@ -1,8 +1,8 @@
 <h2>コンテナ情報</h2>
 
-<%= button_to '開始', containers_start_path, method: :put %>
-<%= button_to '停止', containers_stop_path, method: :put %>
-<%= button_to '削除', containers_delete_path, method: :delete %>
+<%= button_to '開始', containers_start_path, method: :post %>
+<%= button_to '停止', containers_stop_path, method: :post %>
+<%= button_to '削除', containers_remove_path, method: :delete %>
 
 <table>
   <tr>

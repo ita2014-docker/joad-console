@@ -43,7 +43,7 @@ class JoadContainerDetail
     @origin.stop if is_running?
   end
 
-  def delete
+  def remove
     stop
     @origin.remove
   end
