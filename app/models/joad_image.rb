@@ -12,10 +12,10 @@ class JoadImage
 
     def convert(docker_image)
       params = {
-        'id' => docker_image.id,
-        'size' => docker_image.info['VirtualSize'],
-        'created' => Time.at(docker_image.info['Created']),
-        'repo_tags' => docker_image.info['RepoTags'].map do |rt|
+        id: docker_image.id,
+        size: docker_image.info['VirtualSize'],
+        created: Time.at(docker_image.info['Created']),
+        repo_tags: docker_image.info['RepoTags'].map do |rt|
           repo, tag = rt.split(':')
           { repo: repo, tag: tag }
         end
@@ -25,10 +25,10 @@ class JoadImage
   end
 
   def initialize(params = {})
-    @id = params['id']
-    @size = params['size']
-    @created = params['created']
-    @repo_tags = params['repo_tags']
+    @id = params[:id]
+    @size = params[:size]
+    @created = params[:created]
+    @repo_tags = params[:repo_tags]
   end
 
   def short_id
