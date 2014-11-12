@@ -3,7 +3,7 @@ require 'docker'
 class JoadImage
   include ActiveModel::Model
 
-  attr_reader :id, :size, :created, :repo_tags
+  attr_accessor :id, :size, :created, :repo_tags
 
   class << self
     def all
