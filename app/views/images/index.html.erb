@@ -1,5 +1,11 @@
 <h1>イメージ一覧</h1>
 
+<%= form_for(@new_image, url: images_create_path) do |f| %>
+  <%= f.label :repo_tags, 'タグ' %>
+  <%= f.text_field :repo_tags, name: 'joad_image[repo_tags][]' %>
+  <%= f.submit '追加' %>
+<% end %>
+
 <table>
   <tr>
     <th>ID</th>
