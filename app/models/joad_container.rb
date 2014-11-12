@@ -1,71 +1,31 @@
-class JoadContainer < Docker::Container
-  include ActiveModel::Validations
-  include ActiveModel::Conversion
-  extend ActiveModel::Naming
-  extend ActiveModel::Translation
+require 'docker'
 
-  def persisted?; false; end
+class JoadContainer
+  include ActiveModel::Model
 
-  def attributes=(attributes = {})
-    if attributes
-      attributes.each do |name, value|
-        send "#{name}=", value
-      end
+  attr_reader :id, :image, :command, :running, :ip, :ports, :created
+
+  class << self
+    def all
+      Docker::Container.all(all: true).map {|c| new(c) }
     end
   end
-   
-  def attributes
-    Hash[instance_variable_names.map{|v| [v[1..-1], instance_variable_get(v)]}]
+
+  def initialize(docker_container)
+    @id = docker_container.id
+    @image = docker_container.json['Config']['Image']
+    @command = docker_container.json['Config']['Cmd']
+    @running = docker_container.json['State']['Running']
+    @ip = docker_container.json['NetworkSettings']['IPAddress']
+    @ports = docker_container.json['NetworkSettings']['Ports']
+    @created = Time.at(docker_container.info['Created'])
   end
 
-  def get_short_id
-    id[0...12]
-  end
-
-  def get_image_name
-    json["Config"]["Image"]
-  end
-
-  def get_command
-    json["Config"]["Cmd"].join(" ")
+  def short_id
+    @id[0...12]
   end
 
   def is_running?
-    json["State"]["Running"]
-  end
-
-  def get_state
-    is_running? ? "稼働中" : "停止"   
-  end
-
-  def get_container_ipaddr
-    json["NetworkSettings"]["IPAddress"]
-  end
-
-  def get_port_forwarding
-    port_forwarding = ""
-    if json["NetworkSettings"]["Ports"]
-      ports = json["NetworkSettings"]["Ports"]
-      ports.keys.each do |port|
-        if port_forwarding != ""
-          port_forwarding = "<BR>" + port_forwarding
-        end
-        port_forwarding += ports[port][0]["HostPort"] + " -> " + port
-      end
-    end
-
-    port_forwarding
-  end
-
-  def get_port_bindings
-    json["HostConfig"]["PortBindings"]
-  end
-
-  def get_created
-    if info["Created"].kind_of?(Integer)
-      Time.at(info["Created"]) if info["Created"]
-    else
-      info["Created"]
-    end
+    @running
   end
 end

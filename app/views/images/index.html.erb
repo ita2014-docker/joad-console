@@ -1,8 +1,3 @@
-<%= link_to "イメージ一覧", :controller => "images", :action => "index" %>
-<%= link_to "コンテナ一覧", :controller => "containers", :action => "index" %>
-
-<hr>
-
 <h1>イメージ一覧</h1>
 
 <table>
@@ -14,15 +9,15 @@
     <th>作成日</th>
   </tr>
 
-<% @images.each do |image| %>
+<%- @images.each do |image| %>
+  <%- image.repo_tags.each do |rt| %>
   <tr>
-    <td><%= image.get_short_id %></td>
-    <td><%= image.get_repository %></td>
-    <td><%= image.get_tag %></td>
-    <td><%= number_to_human_size(image.get_size) %></td>
-    <td><%= image.get_created %></td>
+    <td><%= image.short_id %></td>
+    <td><%= rt[:repo] %></td>
+    <td><%= rt[:tag] %></td>
+    <td><%= number_to_human_size(image.size) %></td>
+    <td><%= image.created %></td>
   </tr>
-
-<% end %>
-
+  <%- end %>
+<%- end %>
 </table>

@@ -1,31 +1,27 @@
 class ContainersController < ApplicationController
   def index
-    if params["containers"]
-      if params[:start]
-        params["containers"]["id"].each do |id|
-          container = JoadContainer.get(id)
-          container.start if !container.is_running?
-        end
-      elsif params[:stop]
-        params["containers"]["id"].each do |id|
-          container = JoadContainer.get(id)
-          container.stop if container.is_running?
-        end
-      elsif params[:rm]
-        params["containers"]["id"].each do |id|
-          container = JoadContainer.get(id)
-          container.stop if container.is_running?
-          container.remove
-        end
-      end
-    end
-
-    @containers = JoadContainer.all("all" => true)
-    render :action => 'index.html.erb'
+    @containers = JoadContainer.all
   end
 
   def show
-    @container = JoadContainer.get(params["id"])
-    render :action => 'show.html.erb'
+    @container = JoadContainerDetail.get(params['id'])
+  end
+
+  def start
+    c = JoadContainerDetail.get(params['id'])
+    c.start
+    redirect_to containers_show_path(id: params['id'])
+  end
+
+  def stop
+    c = JoadContainerDetail.get(params['id'])
+    c.stop
+    redirect_to containers_show_path(id: params['id'])
+  end
+
+  def remove
+    c = JoadContainerDetail.get(params['id'])
+    c.remove
+    redirect_to containers_index_path
   end
 end

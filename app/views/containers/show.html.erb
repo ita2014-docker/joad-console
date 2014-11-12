@@ -1,40 +1,40 @@
-<%= link_to "コンテナ一覧に戻る", :action => 'index' %>
-
-<hr>
-
 <h2>コンテナ情報</h2>
+
+<%= button_to '開始', containers_start_path, method: :post %>
+<%= button_to '停止', containers_stop_path, method: :post %>
+<%= button_to '削除', containers_remove_path, method: :delete %>
 
 <table>
   <tr>
     <td>コンテナID</td>
-    <td><%= @container.get_short_id %></td>
+    <td><%= @container.short_id %></td>
   </tr>
   <tr>
     <td>イメージ</td>
-    <td><%= simple_format(@container.get_image_name) %></td>
+    <td><%= @container.image %></td>
   </tr>
   <tr>
     <td>コマンド</td>
-    <td><%= simple_format(@container.get_command) %></td>
+    <td><%= @container.command %></td>
   </tr>
   <tr>
     <td>環境変数</td>
-    <td><%= simple_format(@container.json["Config"]["Env"].join("<BR>")) %></td>
+    <td><%= @container.env %></td>
   <tr>
     <td>稼動状態</td>
-    <td><%= simple_format(@container.get_state) %></td>
+    <td><%= @container.running %></td>
   </tr>
   <tr>
     <td>IPアドレス</td>
-    <td><%= simple_format(@container.get_container_ipaddr) %></td>
+    <td><%= @container.ip %></td>
   </tr>
   <tr>
     <td>ポートフォワード</td>
-    <td><%= simple_format(@container.get_port_forwarding) %></td>
+    <td><%= @container.ports %></td>
   </tr>
   <tr>
     <td>作成日</td>
-    <td><%= simple_format(@container.get_created) %></td>
+    <td><%= @container.created %></td>
   </tr>
 </table>
 
@@ -42,24 +42,15 @@
 
 <table>
   <tr>
-    <th>ユーザーID</th>
     <th>プロセスID</th>
-    <th>親プロセスID</th>
-    <th>プロセッサ使用率</th>
-    <th>開始時間</th>
-    <th>CPU時間</th>
+    <th>ユーザー</th>
     <th>実行コマンド</th>
   </tr>
-
-  <% @container.top.each do |t| %>
-    <tr>
-      <td><%= t["UID"] %></td>
-      <td><%= t["PID"] %></td>
-      <td><%= t["PPID"] %></td>
-      <td><%= t["C"] %></td>
-      <td><%= t["STIME"] %></td>
-      <td><%= t["TIME"] %></td>
-      <td><%= t["CMD"] %></td>
-    </tr>
-  <% end %>
+<%- @container.top.each do |t| %>
+  <tr>
+    <td><%= t["PID"] %></td>
+    <td><%= t["USER"] %></td>
+    <td><%= t["COMMAND"] %></td>
+  </tr>
+<%- end %>
 </table>
