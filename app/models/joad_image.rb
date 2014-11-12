@@ -24,13 +24,6 @@ class JoadImage
     end
   end
 
-  def initialize(params = {})
-    @id = params[:id]
-    @size = params[:size]
-    @created = params[:created]
-    @repo_tags = params[:repo_tags]
-  end
-
   def short_id
     @id[0...12]
   end
