@@ -3,24 +3,27 @@ require 'docker'
 class JoadContainerDetail
   include ActiveModel::Model
 
-  attr_reader :origin, :id, :image, :command, :env, :running, :ip, :ports, :created, :top
+  attr_accessor :origin, :id, :image, :command, :env, :running, :ip, :ports, :created, :top
 
   class << self
     def get(id)
-      new(Docker::Container.get(id))
+      convert(Docker::Container.get(id))
     end
-  end
 
-  def initialize(docker_container)
-    @origin = docker_container
-    @id = docker_container.id
-    @image = docker_container.info['Config']['Image']
-    @command = docker_container.info['Config']['Cmd']
-    @env = docker_container.info['Config']['Env']
-    @running = docker_container.info['State']['Running']
-    @ip = docker_container.info['NetworkSettings']['IPAddress']
-    @ports = docker_container.info['NetworkSettings']['Ports']
-    @created = docker_container.info['Created']
+    def convert(docker_container)
+      params = {
+        origin: docker_container,
+        id: docker_container.id,
+        image: docker_container.info['Config']['Image'],
+        command: docker_container.info['Config']['Cmd'],
+        env: docker_container.info['Config']['Env'],
+        running: docker_container.info['State']['Running'],
+        ip: docker_container.info['NetworkSettings']['IPAddress'],
+        ports: docker_container.info['NetworkSettings']['Ports'],
+        created: docker_container.info['Created']
+      }
+      new(params)
+    end
   end
 
   def short_id
