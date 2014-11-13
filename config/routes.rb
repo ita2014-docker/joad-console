@@ -1,3 +1,5 @@
+require 'resque/server'
+
 JoadConsole::Application.routes.draw do
   root 'home#index'
 
@@ -14,4 +16,6 @@ JoadConsole::Application.routes.draw do
     get 'images/:id' => :show, as: :images_show
     post 'images/create' => :create, as: :images_create
   end
+
+  mount Resque::Server.new, at: '/resque'
 end
