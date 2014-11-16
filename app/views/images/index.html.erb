@@ -1,29 +1,61 @@
-<h1>イメージ一覧</h1>
+<div class="container">
+  <h2>イメージ一覧</h2>
 
-<%= form_for(@new_image, url: images_create_path) do |f| %>
-  <%= f.label :repo_tags, 'タグ' %>
-  <%= f.text_field :repo_tags, name: 'joad_image[repo_tags][]' %>
-  <%= f.submit '追加' %>
-<% end %>
+  <p>
+    <button type="button" class="btn btn-primary"
+            data-toggle="modal" data-target="#addImageDialog">
+      追加
+    </button>
+  </p>
 
-<table>
-  <tr>
-    <th>ID</th>
-    <th>リポジトリ</th>
-    <th>タグ</th>
-    <th>サイズ</th>
-    <th>作成日</th>
-  </tr>
+  <table class="table table-striped">
+    <tr>
+      <th>ID</th>
+      <th>リポジトリ</th>
+      <th>タグ</th>
+      <th>サイズ</th>
+      <th>作成日</th>
+    </tr>
 
-<%- @images.each do |image| %>
-  <%- image.repo_tags.each do |rt| %>
-  <tr>
-    <td><%= image.short_id %></td>
-    <td><%= rt[:repo] %></td>
-    <td><%= rt[:tag] %></td>
-    <td><%= number_to_human_size(image.size) %></td>
-    <td><%= image.created %></td>
-  </tr>
-  <%- end %>
-<%- end %>
-</table>
+    <tbody>
+      <%- @images.each do |image| %>
+        <%- image.repo_tags.each do |rt| %>
+      <tr>
+        <td><%= image.short_id %></td>
+        <td><%= rt[:repo] %></td>
+        <td><%= rt[:tag] %></td>
+        <td><%= number_to_human_size(image.size) %></td>
+        <td><%= image.created %></td>
+      </tr>
+        <%- end %>
+      <%- end %>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal Dialog -->
+<div class="modal fade" id="addImageDialog" role="dialog"
+     tabindex="-1" aria-labelledby="addImageLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="addImageLabel">新しいイメージの追加</h4>
+      </div>
+      <%= form_for(@new_image, url: images_create_path) do |f| %>
+        <div class="modal-body">
+          <%= f.label :repo_tags, 'リポジトリ:タグ' %>
+          <%= f.text_field :repo_tags, name: 'joad_image[repo_tags][]' %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">
+            キャンセル
+          </button>
+          <%= f.submit '追加', class: "btn btn-primary" %>
+        </div>
+      <%- end %>
+    </div>
+  </div>
+</div>

@@ -28,8 +28,10 @@ GEM
     archive-tar-minitar (0.5.2)
     arel (4.0.2)
     awesome_print (1.2.0)
-    bootstrap-sass (2.3.2.0)
+    bootstrap-sass (3.3.1.0)
       sass (~> 3.2)
+    bootswatch-rails (3.2.4)
+      railties (>= 3.1)
     builder (3.1.4)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -190,7 +192,8 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
-  bootstrap-sass (= 2.3.2.0)
+  bootstrap-sass
+  bootswatch-rails
   capybara (= 2.1.0)
   childprocess (= 0.3.6)
   coffee-rails (= 4.0.1)

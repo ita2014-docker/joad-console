@@ -1,56 +1,70 @@
-<h2>コンテナ情報</h2>
+<div class="container">
+  <h2>コンテナ情報</h2>
 
-<%= button_to '開始', containers_start_path, method: :post %>
-<%= button_to '停止', containers_stop_path, method: :post %>
-<%= button_to '削除', containers_remove_path, method: :delete %>
+  <ul class="list-inline">
+    <li>
+      <%= button_to '開始', containers_start_path, method: :post, class: "btn btn-primary" %>
+    </li>
+    <li>
+      <%= button_to '停止', containers_stop_path, method: :post, class: "btn btn-primary" %>
+    </li>
+    <li>
+      <%= button_to '削除', containers_remove_path, method: :delete, class: "btn btn-danger" %>
+    </li>
+  </ul>
 
-<table>
-  <tr>
-    <td>コンテナID</td>
-    <td><%= @container.short_id %></td>
-  </tr>
-  <tr>
-    <td>イメージ</td>
-    <td><%= @container.image %></td>
-  </tr>
-  <tr>
-    <td>コマンド</td>
-    <td><%= @container.command %></td>
-  </tr>
-  <tr>
-    <td>環境変数</td>
-    <td><%= @container.env %></td>
-  <tr>
-    <td>稼動状態</td>
-    <td><%= @container.running %></td>
-  </tr>
-  <tr>
-    <td>IPアドレス</td>
-    <td><%= @container.ip %></td>
-  </tr>
-  <tr>
-    <td>ポートフォワード</td>
-    <td><%= @container.ports %></td>
-  </tr>
-  <tr>
-    <td>作成日</td>
-    <td><%= @container.created %></td>
-  </tr>
-</table>
+  <table class="table table-striped">
+    <tr>
+      <th>コンテナID</th>
+      <td><%= @container.short_id %></td>
+    </tr>
+    <tr>
+      <th>イメージ</th>
+      <td><%= @container.image %></td>
+    </tr>
+    <tr>
+      <th>コマンド</th>
+      <td><%= @container.command %></td>
+    </tr>
+    <tr>
+      <th>環境変数</th>
+      <td><%= @container.env %></td>
+    </tr>
+    <tr>
+      <th>稼動状態</th>
+      <td><%= @container.running %></td>
+    </tr>
+    <tr>
+      <th>IPアドレス</th>
+      <td><%= @container.ip %></td>
+    </tr>
+    <tr>
+      <th>ポートフォワード</th>
+      <td><%= @container.ports %></td>
+    </tr>
+    <tr>
+      <th>作成日</th>
+      <td><%= @container.created %></td>
+    </tr>
+  </table>
 
-<h2>コンテナのプロセス状態</h2>
+  <h2>コンテナのプロセス状態</h2>
 
-<table>
-  <tr>
-    <th>プロセスID</th>
-    <th>ユーザー</th>
-    <th>実行コマンド</th>
-  </tr>
-<%- @container.top.each do |t| %>
-  <tr>
-    <td><%= t["PID"] %></td>
-    <td><%= t["USER"] %></td>
-    <td><%= t["COMMAND"] %></td>
-  </tr>
-<%- end %>
-</table>
+  <table class="table table-striped">
+    <tr>
+      <th>プロセスID</th>
+      <th>ユーザー</th>
+      <th>実行コマンド</th>
+    </tr>
+
+    <tbody>
+      <%- @container.top.each do |t| %>
+      <tr>
+        <td><%= t["PID"] %></td>
+        <td><%= t["USER"] %></td>
+        <td><%= t["COMMAND"] %></td>
+      </tr>
+      <%- end %>
+    </tbody>
+  </table>
+</div>

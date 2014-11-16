@@ -1,26 +1,31 @@
-<h1>コンテナ一覧</h1>
+<div class="container">
+  <h2>コンテナ一覧</h2>
 
-<table>
-  <tr>
-    <th>コンテナID</th>
-    <th>イメージ</th>
-    <th>コマンド</th>
-    <th>稼動状態</th>
-    <th>IPアドレス</th>
-    <th>ポートフォワード</th>
-    <th>作成日</th>
-    <th>&nbsp;</th>
-  </tr>
-<%- @containers.each do |container| %>
-  <tr>
-    <td><%= container.short_id %></td>
-    <td><%= container.image %></td>
-    <td><%= container.command %></td>
-    <td><%= container.is_running? %></td>
-    <td><%= container.ip %></td>
-    <td><%= container.ports %></td>
-    <td><%= container.created %></td>
-    <td><%= link_to "詳細", containers_show_path(id: container.short_id) %></td>
-  </tr>
-<%- end %>
-</table>
+  <table class="table table-striped">
+    <tr>
+      <th>コンテナID</th>
+      <th>イメージ</th>
+      <th>コマンド</th>
+      <th>稼動状態</th>
+      <th>IPアドレス</th>
+      <th>ポートフォワード</th>
+      <th>作成日</th>
+      <th>&nbsp;</th>
+    </tr>
+
+    <tbody>
+      <%- @containers.each do |container| %>
+      <tr>
+        <td><%= container.short_id %></td>
+        <td><%= container.image %></td>
+        <td><%= container.command %></td>
+        <td><%= container.is_running? %></td>
+        <td><%= container.ip %></td>
+        <td><%= container.ports %></td>
+        <td><%= container.created %></td>
+        <td><%= link_to "詳細", containers_show_path(id: container.short_id), class: "btn btn-primary btn-sm" %></td>
+      </tr>
+      <%- end %>
+    </tbody>
+  </table>
+</div>
