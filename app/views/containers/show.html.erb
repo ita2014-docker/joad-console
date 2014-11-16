@@ -2,9 +2,15 @@
   <h2>コンテナ情報</h2>
 
   <ul class="list-inline">
-    <li><%= button_to '開始', containers_start_path, method: :post, class: "btn btn-primary" %></li>
-    <li><%= button_to '停止', containers_stop_path, method: :post, class: "btn btn-warning" %></li>
-    <li><%= button_to '削除', containers_remove_path, method: :delete, class: "btn btn-danger" %></li>
+    <li>
+      <%= button_to '開始', containers_start_path, method: :post, class: "btn btn-primary" %>
+    </li>
+    <li>
+      <%= button_to '停止', containers_stop_path, method: :post, class: "btn btn-primary" %>
+    </li>
+    <li>
+      <%= button_to '削除', containers_remove_path, method: :delete, class: "btn btn-danger" %>
+    </li>
   </ul>
 
   <table class="table table-striped">
