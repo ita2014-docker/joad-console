@@ -8,13 +8,27 @@
 </head>
 <body>
 
-  <%= link_to "トップ", root_path %> |
-  <%= link_to "イメージ一覧", images_index_path %> |
-  <%= link_to "コンテナ一覧", containers_index_path %>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="<%= root_path %>">Joad Console</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="<%= images_index_path %>">イメージ一覧</a></li>
+          <li><a href="<%= containers_index_path %>">コンテナ一覧</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-  <hr>
-
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>
