@@ -30,7 +30,9 @@ class JoadImage
 
   def create
     @repo_tags.each do |rt|
-      Resque.enqueue(PullImageWorker, rt)
+      Thread.new do
+        Docker::Image.create(fromImage: rt)
+      end
     end if @repo_tags
   end
 end

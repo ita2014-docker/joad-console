@@ -9,11 +9,6 @@ gem 'sprockets', '2.11.0'
 gem 'docker-api'
 gem 'awesome_print'
 
-# Async
-gem 'resque'
-gem 'sqlite3'
-gem 'daemon-spawn', :require => 'daemon_spawn'
-
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
   gem 'guard-rspec', '2.5.0'
