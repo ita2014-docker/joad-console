@@ -11,9 +11,9 @@ class ImagesController < ApplicationController
     redirect_to images_index_path
   end
 
-  def start_container
-    c = JoadContainerDetail.new(joad_container_params)
-    c.start
+  def create_container
+    c = JoadContainerDetail.new(joad_container_detail_params)
+    c.create
     redirect_to containers_index_path
   end
 
@@ -23,7 +23,7 @@ class ImagesController < ApplicationController
     params.require(:joad_image).permit(:repo_tags => [])
   end
 
-  def joad_container_params
-    params.require(:joad_container).permit(:image, :command)
+  def joad_container_detail_params
+    params.require(:joad_container_detail).permit(:image, :command)
   end
 end

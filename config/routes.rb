@@ -13,6 +13,6 @@ JoadConsole::Application.routes.draw do
     get 'images' => :index, as: :images_index
     get 'images/:id' => :show, as: :images_show
     post 'images/create' => :create, as: :images_create
-    post 'images/start_container' => :start_container, as: :start_container
+    post 'images/create_container' => :create_container, as: :create_container
   end
 end

@@ -8,12 +8,12 @@
         </button>
         <h4 class="modal-title" id="startContainerLabel">コンテナの起動</h4>
       </div>
-      <%= form_for(@new_container, url: start_container_path) do |f| %>
+      <%= form_for(@new_container, url: create_container_path) do |f| %>
         <div class="modal-body">
           <%= f.label :image, 'イメージ' %>
-          <%= f.text_field :image, name: 'image'  %>
+          <%= f.select :image, images_for_select(@images), include_blank: true  %>
           <%= f.label :command, 'コマンド' %>
-          <%= f.text_field :command, name: 'command' %>
+          <%= f.text_field :command %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">

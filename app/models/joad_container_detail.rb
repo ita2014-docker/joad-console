@@ -46,7 +46,7 @@ class JoadContainerDetail
     @origin.stop if is_running?
   end
 
-  def start
+  def create
     c = Docker::Container.create(Image: @image, Cmd: @command)
     c.start
   end
