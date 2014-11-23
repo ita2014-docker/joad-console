@@ -24,6 +24,10 @@ class ImagesController < ApplicationController
   end
 
   def joad_container_detail_params
-    params.require(:joad_container_detail).permit(:image, :command)
+    permitted_params = params.require(:joad_container_detail).permit(:image, :command, :env => [])
+
+    # convert ["ENV_KEY", "ENV_VALUE"] to ["ENV_KEY=ENV_VALUE"]
+    permitted_params[:env] = permitted_params[:env].each_slice(2).map {|k, v| "#{k}=#{v}" }
+    permitted_params
   end
 end
