@@ -8,12 +8,6 @@
         追加
       </button>
     </li>
-    <li>
-      <button type="button" class="btn btn-primary"
-              data-toggle="modal" data-target="#startContainerDialog">
-        起動
-      </button>
-    </li>
   </p>
 
   <table class="table table-striped">
@@ -24,6 +18,7 @@
         <th>タグ</th>
         <th>サイズ</th>
         <th>作成日</th>
+        <th></th>
       </tr>
     </thead>
 
@@ -36,6 +31,7 @@
         <td><%= rt[:tag] %></td>
         <td><%= number_to_human_size(image.size) %></td>
         <td><%= image.created %></td>
+        <td><%= button_to '起動', create_container_path(image.short_id), method: :post, class: 'btn btn-primary btn-sm' %></td>
       </tr>
         <%- end %>
       <%- end %>
@@ -44,4 +40,3 @@
 </div>
 
 <%= render partial: 'add_image_dialog' %>
-<%= render partial: 'create_container_dialog' %>

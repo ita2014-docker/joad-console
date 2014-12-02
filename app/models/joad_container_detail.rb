@@ -47,7 +47,7 @@ class JoadContainerDetail
   end
 
   def create
-    c = Docker::Container.create(Image: @image, Cmd: @command, Env: @env)
+    c = Docker::Container.create(Image: @image)
     c.start
   end
 
