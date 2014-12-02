@@ -10,6 +10,12 @@ class ImagesController < ApplicationController
     redirect_to images_index_path
   end
 
+  def create_container
+    c = JoadContainerDetail.new({image: params[:id]})
+    c.create
+    redirect_to containers_index_path
+  end
+
   private
 
   def joad_image_params

@@ -1,0 +1,30 @@
+<div class="modal fade" id="startContainerDialog" role="dialog"
+     tabindex="-1" aria-labelledby="startContainerLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="startContainerLabel">コンテナの起動</h4>
+      </div>
+      <%= form_for(@new_container, url: create_container_path) do |f| %>
+        <div class="modal-body">
+          <%= f.label :image, 'イメージ' %>
+          <%= f.select :image, images_for_select(@images), include_blank: true  %>
+          <%= f.label :command, 'コマンド' %>
+          <%= f.text_field :command %>
+          <%= f.label :env, '環境変数' %>
+          <%= f.text_field :env, name: 'joad_container_detail[env][]' %>
+          <%= f.text_field :env, name: 'joad_container_detail[env][]' %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">
+            キャンセル
+          </button>
+          <%= f.submit '起動', class: "btn btn-primary" %>
+        </div>
+      <%- end %>
+    </div>
+  </div>
+</div>

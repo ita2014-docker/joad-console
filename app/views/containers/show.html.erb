@@ -51,11 +51,13 @@
   <h2>コンテナのプロセス状態</h2>
 
   <table class="table table-striped">
-    <tr>
-      <th>プロセスID</th>
-      <th>ユーザー</th>
-      <th>実行コマンド</th>
-    </tr>
+    <thead>
+      <tr>
+        <th>プロセスID</th>
+        <th>ユーザー</th>
+        <th>実行コマンド</th>
+      </tr>
+    </thead>
 
     <tbody>
       <%- @container.top.each do |t| %>

@@ -2,16 +2,18 @@
   <h2>コンテナ一覧</h2>
 
   <table class="table table-striped">
-    <tr>
-      <th>コンテナID</th>
-      <th>イメージ</th>
-      <th>コマンド</th>
-      <th>稼動状態</th>
-      <th>IPアドレス</th>
-      <th>ポートフォワード</th>
-      <th>作成日</th>
-      <th>&nbsp;</th>
-    </tr>
+    <thead>
+      <tr>
+        <th>コンテナID</th>
+        <th>イメージ</th>
+        <th>コマンド</th>
+        <th>稼動状態</th>
+        <th>IPアドレス</th>
+        <th>ポートフォワード</th>
+        <th>作成日</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
 
     <tbody>
       <%- @containers.each do |container| %>
