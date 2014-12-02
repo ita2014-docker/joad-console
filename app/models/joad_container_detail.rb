@@ -47,7 +47,7 @@ class JoadContainerDetail
   end
 
   def create
-    c = Docker::Container.create(Image: @image)
+    c = Docker::Container.create(Image: @image, HostConfig: {PublishAllPorts: true})
     c.start
   end
 
