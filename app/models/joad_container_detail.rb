@@ -38,6 +38,10 @@ class JoadContainerDetail
     is_running? ? @origin.top : []
   end
 
+  def top_keys
+    is_running? ? top.first.keys : []
+  end
+
   def start
     @origin.start unless is_running?
   end

@@ -53,12 +53,13 @@
     </tr>
   </table>
 
+  <%- if @container.is_running? %>
   <h2>コンテナのプロセス状態</h2>
 
   <table class="table table-striped">
     <thead>
       <tr>
-        <%- @container.top.first.keys.each do |key| %>
+        <%- @container.top_keys.each do |key| %>
         <th><%= key %></th>
         <%- end %>
       </tr>
@@ -74,4 +75,5 @@
       <%- end %>
     </tbody>
   </table>
+  <%- end %>
 </div>
