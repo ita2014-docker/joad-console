@@ -23,7 +23,7 @@
         <td><%= container.short_id %></td>
         <td><%= container.image %></td>
         <td><%= container.command %></td>
-        <td><%= container.is_running? %></td>
+        <td><%= ok?(container.is_running?) %></td>
         <td><%= container.ip %></td>
         <td><%= container.ports %></td>
         <td><%= container.created %></td>
