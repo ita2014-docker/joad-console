@@ -4,12 +4,15 @@
   <h2>コンテナ情報</h2>
 
   <ul class="list-inline">
+    <%- unless @container.is_running? %>
     <li>
       <%= button_to '開始', containers_start_path, method: :post, class: "btn btn-primary" %>
     </li>
+    <%- else %>
     <li>
-      <%= button_to '停止', containers_stop_path, method: :post, class: "btn btn-primary" %>
+      <%= button_to '停止', containers_stop_path, method: :post, class: "btn btn-warning" %>
     </li>
+    <%- end %>
     <li>
       <%= button_to '削除', containers_remove_path, method: :delete, class: "btn btn-danger" %>
     </li>
@@ -34,7 +37,7 @@
     </tr>
     <tr>
       <th>稼動状態</th>
-      <td><%= @container.running %></td>
+      <td><%= ok?(@container.is_running?) %></td>
     </tr>
     <tr>
       <th>IPアドレス</th>
