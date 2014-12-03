@@ -55,18 +55,18 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>プロセスID</th>
-        <th>ユーザー</th>
-        <th>実行コマンド</th>
+        <%- @container.top.first.keys.each do |key| %>
+        <th><%= key %></th>
+        <%- end %>
       </tr>
     </thead>
 
     <tbody>
       <%- @container.top.each do |t| %>
       <tr>
-        <td><%= t["PID"] %></td>
-        <td><%= t["USER"] %></td>
-        <td><%= t["COMMAND"] %></td>
+        <%- t.values.each do |value| %>
+        <td><%= value %></td>
+        <%- end %>
       </tr>
       <%- end %>
     </tbody>
