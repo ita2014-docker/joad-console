@@ -1,6 +1,10 @@
 JoadConsole::Application.routes.draw do
   root 'home#index'
 
+  controller :jobs do
+    get 'jobs' => :index, as: :jobs_index
+  end
+
   controller :containers do
     get 'containers' => :index, as: :containers_index
     get 'containers/:id' => :show, as: :containers_show
