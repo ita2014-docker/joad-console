@@ -14,16 +14,18 @@
   <table class="table table-striped">
     <thead>
       <tr>
+        <th>ステータス</th>
         <th>名前</th>
         <th>説明</th>
         <th>リポジトリ</th>
-        <th>最終更新日</th>
+        <th>最終ビルド日時</th>
       </tr>
     </thead>
 
     <tbody>
       <%- @jobs.each do |job| %>
       <tr>
+        <td><%= job.status %></td>
         <td><%= job.name %></td>
         <td><%= job.description %></td>
         <td><%= job.repository_url %></td>

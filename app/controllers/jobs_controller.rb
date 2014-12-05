@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
   def index
-    @jobs = []
+    @jobs = JoadJob.all
   end
 end
