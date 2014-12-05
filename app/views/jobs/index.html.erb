@@ -1,2 +1,35 @@
-<h1>Jobs#index</h1>
-<p>Find me in app/views/jobs/index.html.erb</p>
+<%- content_for :title do %>ジョブ一覧<% end %>
+
+<div class="container">
+  <h2>ジョブ一覧</h2>
+
+  <ul class="list-inline">
+    <li>
+      <button type="button" class="btn btn-primary">
+        追加
+      </button>
+    </li>
+  </p>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>名前</th>
+        <th>説明</th>
+        <th>リポジトリ</th>
+        <th>最終更新日</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%- @jobs.each do |job| %>
+      <tr>
+        <td><%= job.name %></td>
+        <td><%= job.description %></td>
+        <td><%= job.repository_url %></td>
+        <td><%= job.last_build %></td>
+      </tr>
+      <%- end %>
+    </tbody>
+  </table>
+</div>
