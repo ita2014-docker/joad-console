@@ -10,6 +10,9 @@ gem 'sprockets', '2.11.0'
 gem 'docker-api'
 gem 'awesome_print'
 
+# Jenkins API
+gem 'jenkins_api_client'
+
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
   gem 'guard-rspec', '2.5.0'
