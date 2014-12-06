@@ -3,6 +3,7 @@ JoadConsole::Application.routes.draw do
 
   controller :jobs do
     get 'jobs' => :index, as: :jobs_index
+    post 'jobs/create' => :create, as: :jobs_create
   end
 
   controller :containers do

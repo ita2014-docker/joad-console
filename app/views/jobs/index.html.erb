@@ -5,7 +5,8 @@
 
   <ul class="list-inline">
     <li>
-      <button type="button" class="btn btn-primary">
+      <button type="button" class="btn btn-primary"
+              data-toggle="modal" data-target="#addJobDialog">
         追加
       </button>
     </li>
@@ -35,3 +36,5 @@
     </tbody>
   </table>
 </div>
+
+<%= render partial: 'add_job_dialog' %>
