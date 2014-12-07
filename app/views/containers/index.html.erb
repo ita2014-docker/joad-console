@@ -9,7 +9,6 @@
         <th>コンテナID</th>
         <th>イメージ</th>
         <th>コマンド</th>
-        <th>稼動状態</th>
         <th>IPアドレス</th>
         <th>ポートフォワード</th>
         <th>作成日</th>
@@ -20,10 +19,9 @@
     <tbody>
       <%- @containers.each do |container| %>
       <tr>
-        <td><%= container.short_id %></td>
+        <td><%= running_status_icon(container.is_running?) %> <%= container.short_id %></td>
         <td><%= container.image %></td>
         <td><%= container.command %></td>
-        <td><%= ok?(container.is_running?) %></td>
         <td><%= container.ip %></td>
         <td><%= container.ports %></td>
         <td><%= container.created %></td>

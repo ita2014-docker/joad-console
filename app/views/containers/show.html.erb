@@ -21,7 +21,7 @@
   <table class="table table-striped">
     <tr>
       <th>コンテナID</th>
-      <td><%= @container.short_id %></td>
+      <td><%= @container.id %></td>
     </tr>
     <tr>
       <th>イメージ</th>
@@ -37,7 +37,7 @@
     </tr>
     <tr>
       <th>稼動状態</th>
-      <td><%= ok?(@container.is_running?) %></td>
+      <td><%= running_status_icon(@container.is_running?) %></td>
     </tr>
     <tr>
       <th>IPアドレス</th>
