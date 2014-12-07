@@ -13,10 +13,8 @@ module JobsHelper
       '<span class="text-muted glyphicon glyphicon-question-sign" aria-hidden="true"></span>'
     when 'aborted'
       '<span class="text-danger glyphicon glyphicon-minus" aria-hidden="true"></span>'
-    when 'invalid'
+    else # 'invalid' or others
       '<span class="text-muted glyphicon glyphicon-ban-circle" aria-hidden="true"></span>'
-    else
-      '<span class="text-muted glyphicon glyphicon-question-sign" aria-hidden="true"></span>'
     end.html_safe
   end
 end
