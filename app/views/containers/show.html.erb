@@ -20,6 +20,10 @@
 
   <table class="table table-striped">
     <tr>
+      <th>稼動状態</th>
+      <td><%= running_status_icon(@container.is_running?) %></td>
+    </tr>
+    <tr>
       <th>コンテナID</th>
       <td><%= @container.id %></td>
     </tr>
@@ -36,10 +40,6 @@
       <td><%= @container.env %></td>
     </tr>
     <tr>
-      <th>稼動状態</th>
-      <td><%= running_status_icon(@container.is_running?) %></td>
-    </tr>
-    <tr>
       <th>IPアドレス</th>
       <td><%= @container.ip %></td>
     </tr>
@@ -54,7 +54,7 @@
   </table>
 
   <%- if @container.is_running? %>
-  <h2>コンテナのプロセス状態</h2>
+  <h3>コンテナのプロセス状態</h3>
 
   <table class="table table-striped">
     <thead>

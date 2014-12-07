@@ -15,6 +15,7 @@
   <table class="table table-striped">
     <thead>
       <tr>
+        <th></th>
         <th>名前</th>
         <th>説明</th>
         <th>リポジトリ</th>
@@ -25,7 +26,8 @@
     <tbody>
       <%- @jobs.each do |job| %>
       <tr>
-        <td><%= job_status_icon(job.status) %> <%= job.name %></td>
+        <td><%= job_status_icon(job.status) %></td>
+        <td><%= job.name %></td>
         <td><%= job.description %></td>
         <td><%= job.repository_url %></td>
         <td><%= job.last_build %></td>

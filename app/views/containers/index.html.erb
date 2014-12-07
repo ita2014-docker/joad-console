@@ -6,6 +6,7 @@
   <table class="table table-striped">
     <thead>
       <tr>
+        <th></th>
         <th>コンテナID</th>
         <th>イメージ</th>
         <th>コマンド</th>
@@ -19,7 +20,8 @@
     <tbody>
       <%- @containers.each do |container| %>
       <tr>
-        <td><%= running_status_icon(container.is_running?) %> <%= container.short_id %></td>
+        <td><%= running_status_icon(container.is_running?) %></td>
+        <td><%= container.short_id %></td>
         <td><%= container.image %></td>
         <td><%= container.command %></td>
         <td><%= container.ip %></td>
