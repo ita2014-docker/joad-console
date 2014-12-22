@@ -20,6 +20,7 @@
         <th><%= t('application.column.description') %></th>
         <th><%= t('application.column.repository_url') %></th>
         <th><%= t('application.column.last_build') %></th>
+        <th></th>
       </tr>
     </thead>
 
@@ -31,6 +32,7 @@
         <td><%= app.description %></td>
         <td><%= app.repository_url %></td>
         <td><%= app.last_build %></td>
+        <td><%= button_to t('button.start'), applications_start_path(app.name), method: :post, class: 'btn btn-primary btn-sm' %></td>
       </tr>
       <%- end %>
     </tbody>

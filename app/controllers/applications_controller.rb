@@ -11,6 +11,12 @@ class ApplicationsController < ApplicationController
     redirect_to applications_index_path
   end
 
+  def start
+    c = JoadContainerDetail.new({image: params[:name]})
+    c.create
+    redirect_to containers_index_path
+  end
+
   private
 
   def joad_application_params
