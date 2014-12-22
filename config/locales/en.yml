@@ -60,6 +60,9 @@ en:
       state: 'Running Status'
       env: 'Environment Variables'
       process: 'Processes'
+    running_status:
+      running: 'Running'
+      stopped: 'Stopped'
   container_detail:
     header: 'Container Details'
     title: 'Container Details'

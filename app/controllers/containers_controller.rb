@@ -10,13 +10,13 @@ class ContainersController < ApplicationController
   def start
     c = JoadContainerDetail.get(params['id'])
     c.start
-    redirect_to containers_show_path(id: params['id'])
+    redirect_to containers_index_path
   end
 
   def stop
     c = JoadContainerDetail.get(params['id'])
     c.stop
-    redirect_to containers_show_path(id: params['id'])
+    redirect_to containers_index_path
   end
 
   def remove
