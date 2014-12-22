@@ -21,6 +21,10 @@
       </td>
     </tr>
     <tr>
+      <th><%= t('application.column.build_number') %></th>
+      <td><%= @application.build_number %></td>
+    </tr>
+    <tr>
       <th><%= t('application.column.name') %></th>
       <td><%= @application.name %></td>
     </tr>
@@ -37,4 +41,7 @@
       <td><%= @application.last_build %></td>
     </tr>
   </table>
+
+  <h3><%= t('application.column.build_log') %></h3>
+  <pre><%= @application.build_log %></pre>
 </div>

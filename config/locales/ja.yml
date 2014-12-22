@@ -16,11 +16,13 @@ ja:
     header: 'アプリケーション'
     title: 'アプリケーション一覧'
     column:
+      build_number: 'ビルド番号'
       name: '名前'
       description: '説明'
       repository_url: 'リポジトリURL'
       last_build: '最終ビルド日時'
       build_status: 'ビルド状態'
+      build_log: 'ビルドログ'
     dialog:
       add: '新しいアプリケーションの追加'
     build_status:
@@ -31,6 +33,9 @@ ja:
       not_run: '未処理'
       aborted: '中止'
       invalid: '不正'
+  application_detail:
+    header: 'アプリケーション詳細'
+    title: 'アプリケーション詳細'
   image:
     header: 'イメージ'
     title: 'イメージ一覧'

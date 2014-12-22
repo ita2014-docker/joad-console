@@ -16,11 +16,13 @@ en:
     header: 'Application'
     title: 'Applications'
     column:
+      build_number: 'Build Number'
       name: 'Name'
       description: 'Description'
       repository_url: 'Repository URL'
       last_build: 'Last Builded'
       build_status: 'Build Status'
+      build_log: 'Build Log'
     dialog:
       add: 'Add New Application'
     build_status:
@@ -31,6 +33,9 @@ en:
       not_run: 'Not Run'
       aborted: 'Aborted'
       invalid: 'Invalid'
+  application_detail:
+    header: 'Application Details'
+    title: 'Application Details'
   image:
     header: 'Image'
     title: 'Images'

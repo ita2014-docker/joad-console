@@ -6,7 +6,7 @@ class JoadApplication
   JENKINS_SERVER_IP = ENV['JENKINS_SERVER_IP'] || '172.17.42.1'
   JENKINS_SERVER_PORT = ENV['JENKINS_SERVER_PORT'] || '8080'
 
-  attr_accessor :name, :description, :repository_url, :last_build, :build_status
+  attr_accessor :build_number, :name, :description, :repository_url, :last_build, :build_status
 
   class << self
     def client
@@ -34,6 +34,7 @@ class JoadApplication
       current_build_status = client.job.get_current_build_status(job_name)
 
       params = {
+        build_number: current_build_number,
         name: job_name,
         description: config_xml.css('project description').text,
         repository_url: config_xml.css('project scm url').text,
@@ -50,5 +51,10 @@ class JoadApplication
 
   def build
     JoadApplication.client.job.build(@name)
+  end
+
+  def build_log
+    console_output = JoadApplication.client.job.get_console_output(@name, @build_number)
+    console_output['output']
   end
 end
