@@ -1,0 +1,50 @@
+ja:
+  button:
+    add: '追加'
+    start: '起動'
+    stop: '停止'
+    delete: '削除'
+    detail: '詳細'
+    cancel: 'キャンセル'
+  joad:
+    title: 'Joad Console'
+    description: 'DockerイメージとDockerコンテナを管理するコンソールです。'
+  home:
+    title: 'Home'
+  application:
+    header: 'アプリケーション'
+    title: 'アプリケーション一覧'
+    column:
+      name: '名前'
+      description: '説明'
+      repository_url: 'リポジトリURL'
+      last_build: '最終ビルド日時'
+    dialog:
+      add: '新しいアプリケーションの追加'
+  image:
+    header: 'イメージ'
+    title: 'イメージ一覧'
+    column:
+      id: 'ID'
+      repository: 'リポジトリ'
+      tag: 'タグ'
+      size: 'サイズ'
+      created: '作成日時'
+    dialog:
+      add: '新しいイメージの追加'
+  container:
+    header: 'コンテナ'
+    title: 'コンテナ一覧'
+    column:
+      id: 'ID'
+      image: 'イメージ'
+      command: 'コマンド'
+      ip: 'IPアドレス'
+      ports: 'ポートフォワード'
+      created: '作成日時'
+      state: '稼動状態'
+      env: '環境変数'
+  container_detail:
+    header: 'コンテナ詳細'
+    title: 'コンテナ詳細'
+    process: 'プロセス一覧'

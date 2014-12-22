@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Joad Console - <%= yield(:title) %></title>
+  <title><%= t('joad.title') %> - <%= yield(:title) %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -17,13 +17,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="<%= root_path %>">Joad Console</a>
+        <a class="navbar-brand" href="<%= root_path %>"><%= t('joad.title') %></a>
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="<%= applications_index_path %>">アプリケーション一覧</a></li>
-          <li><a href="<%= images_index_path %>">イメージ一覧</a></li>
-          <li><a href="<%= containers_index_path %>">コンテナ一覧</a></li>
+          <li><a href="<%= applications_index_path %>"><%= t('application.header') %></a></li>
+          <li><a href="<%= images_index_path %>"><%= t('image.header') %></a></li>
+          <li><a href="<%= containers_index_path %>"><%= t('container.header') %></a></li>
         </ul>
       </div>
     </div>
