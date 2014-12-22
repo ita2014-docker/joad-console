@@ -60,6 +60,9 @@ ja:
       state: '稼動状態'
       env: '環境変数'
       process: 'プロセス一覧'
+    running_status:
+      running: '起動中'
+      stopped: '停止中'
   container_detail:
     header: 'コンテナ詳細'
     title: 'コンテナ詳細'

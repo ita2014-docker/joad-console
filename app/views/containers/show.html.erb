@@ -21,7 +21,14 @@
   <table class="table table-striped">
     <tr>
       <th><%= t('container.column.state') %></th>
-      <td><%= running_status_icon(@container.is_running?) %></td>
+      <td>
+        <%= running_status_icon(@container.is_running?) %>
+        <%- if @container.is_running? %>
+          <%= t('container.running_status.running') %>
+        <%- else %>
+          <%= t('container.running_status.stopped') %>
+        <%- end %>
+      </td>
     </tr>
     <tr>
       <th><%= t('container.column.id') %></th>

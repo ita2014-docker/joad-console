@@ -13,7 +13,7 @@
         <th><%= t('container.column.ip') %></th>
         <th><%= t('container.column.ports') %></th>
         <th><%= t('container.column.created') %></th>
-        <th>&nbsp;</th>
+        <th></th>
       </tr>
     </thead>
 
@@ -21,13 +21,19 @@
       <%- @containers.each do |container| %>
       <tr>
         <td><%= running_status_icon(container.is_running?) %></td>
-        <td><%= container.short_id %></td>
+        <td><%= link_to container.short_id, containers_show_path(container.short_id) %></td>
         <td><%= container.image %></td>
         <td><%= container.command %></td>
         <td><%= container.ip %></td>
         <td><%= container.ports %></td>
         <td><%= container.created %></td>
-        <td><%= link_to t('button.detail'), containers_show_path(id: container.short_id), class: "btn btn-primary btn-sm" %></td>
+        <td>
+        <%- unless container.is_running? %>
+          <%= button_to t('button.start'), containers_start_path(container.id), method: :post, class: "btn btn-primary btn-sm" %>
+        <%- else %>
+          <%= button_to t('button.stop'), containers_stop_path(container.id), method: :post, class: "btn btn-warning btn-sm" %>
+        <%- end %>
+        </td>
       </tr>
       <%- end %>
     </tbody>
