@@ -1,18 +1,18 @@
-<%- content_for :title do %>コンテナ一覧<% end %>
+<%- content_for :title do %><%= t('container.title') %><% end %>
 
 <div class="container">
-  <h2>コンテナ一覧</h2>
+  <h2><%= t('container.title') %></h2>
 
   <table class="table table-striped">
     <thead>
       <tr>
         <th></th>
-        <th>コンテナID</th>
-        <th>イメージ</th>
-        <th>コマンド</th>
-        <th>IPアドレス</th>
-        <th>ポートフォワード</th>
-        <th>作成日</th>
+        <th><%= t('container.column.id') %></th>
+        <th><%= t('container.column.image') %></th>
+        <th><%= t('container.column.command') %></th>
+        <th><%= t('container.column.ip') %></th>
+        <th><%= t('container.column.ports') %></th>
+        <th><%= t('container.column.created') %></th>
         <th>&nbsp;</th>
       </tr>
     </thead>
@@ -27,7 +27,7 @@
         <td><%= container.ip %></td>
         <td><%= container.ports %></td>
         <td><%= container.created %></td>
-        <td><%= link_to "詳細", containers_show_path(id: container.short_id), class: "btn btn-primary btn-sm" %></td>
+        <td><%= link_to t('button.detail'), containers_show_path(id: container.short_id), class: "btn btn-primary btn-sm" %></td>
       </tr>
       <%- end %>
     </tbody>

@@ -1,13 +1,13 @@
-<%- content_for :title do %>Home<% end %>
+<%- content_for :title do %><%= t('home.title') %><% end %>
 
 <div class="jumbotron">
   <div class="container">
-    <h1>Joad Console</h1>
-    <p>DockerイメージとDockerコンテナを管理するコンソールです。</p>
+    <h1><%= t('joad.title') %></h1>
+    <p><%= t('joad.description') %></p>
     <p>
-      <a class="btn btn-primary btn-lg" href="<%= applications_index_path %>" role="button">アプリケーション一覧</a>
-      <a class="btn btn-primary btn-lg" href="<%= images_index_path %>" role="button">イメージ一覧</a>
-      <a class="btn btn-primary btn-lg" href="<%= containers_index_path %>" role="button">コンテナ一覧</a>
+      <a class="btn btn-primary btn-lg" href="<%= applications_index_path %>" role="button"><%= t('application.header') %></a>
+      <a class="btn btn-primary btn-lg" href="<%= images_index_path %>" role="button"><%= t('image.header') %></a>
+      <a class="btn btn-primary btn-lg" href="<%= containers_index_path %>" role="button"><%= t('container.header') %></a>
     </p>
   </div>
 </div>
