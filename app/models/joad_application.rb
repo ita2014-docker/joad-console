@@ -1,6 +1,6 @@
 require 'jenkins_api_client'
 
-class JoadJob
+class JoadApplication
   include ActiveModel::Model
 
   JENKINS_SERVER_IP = ENV['JENKINS_SERVER_IP'] || '172.17.42.1'
@@ -41,6 +41,6 @@ class JoadJob
   end
 
   def create(config_xml)
-    JoadJob.client.job.create(@name, config_xml)
+    JoadApplication.client.job.create(@name, config_xml)
   end
 end

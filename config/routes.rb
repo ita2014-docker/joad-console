@@ -1,9 +1,9 @@
 JoadConsole::Application.routes.draw do
   root 'home#index'
 
-  controller :jobs do
-    get 'jobs' => :index, as: :jobs_index
-    post 'jobs/create' => :create, as: :jobs_create
+  controller :applications do
+    get 'applications' => :index, as: :applications_index
+    post 'applications/create' => :create, as: :applications_create
   end
 
   controller :containers do

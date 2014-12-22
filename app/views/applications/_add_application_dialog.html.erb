@@ -1,14 +1,14 @@
-<div class="modal fade" id="addJobDialog" role="dialog"
-     tabindex="-1" aria-labelledby="addJobLabel" aria-hidden="true">
+<div class="modal fade" id="addApplicationDialog" role="dialog"
+     tabindex="-1" aria-labelledby="addApplicationLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="addJobLabel">新しいジョブの追加</h4>
+        <h4 class="modal-title" id="addApplicationLabel">新しいジョブの追加</h4>
       </div>
-      <%= form_for(@new_job, url: jobs_create_path, html: {class: 'form-horizontal', role: 'form'}) do |f| %>
+      <%= form_for(@new_app, url: applications_create_path, html: {class: 'form-horizontal', role: 'form'}) do |f| %>
         <div class="modal-body">
           <div class="form-group">
             <%= f.label :name, '名前', class: 'col-sm-2 control-label' %>

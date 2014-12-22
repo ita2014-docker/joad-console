@@ -1,0 +1,40 @@
+<%- content_for :title do %>アプリケーション一覧<% end %>
+
+<div class="container">
+  <h2>アプリケーション一覧</h2>
+
+  <ul class="list-inline">
+    <li>
+      <button type="button" class="btn btn-primary"
+              data-toggle="modal" data-target="#addApplicationDialog">
+        追加
+      </button>
+    </li>
+  </ul>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>名前</th>
+        <th>説明</th>
+        <th>リポジトリ</th>
+        <th>最終ビルド日時</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%- @apps.each do |app| %>
+      <tr>
+        <td><%= application_status_icon(app.status) %></td>
+        <td><%= app.name %></td>
+        <td><%= app.description %></td>
+        <td><%= app.repository_url %></td>
+        <td><%= app.last_build %></td>
+      </tr>
+      <%- end %>
+    </tbody>
+  </table>
+</div>
+
+<%= render partial: 'add_application_dialog' %>

@@ -1,5 +1,5 @@
-module JobsHelper
-  def job_status_icon(status)
+module ApplicationsHelper
+  def application_status_icon(status)
     case status
     when 'success'
       '<span class="text-success glyphicon glyphicon-ok" aria-hidden="true"></span>'
