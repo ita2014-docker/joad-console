@@ -54,7 +54,7 @@ en:
       created: 'Created'
       state: 'Running Status'
       env: 'Environment Variables'
+      process: 'Processes'
   container_detail:
     header: 'Container Details'
     title: 'Container Details'
-    process: 'Processes'

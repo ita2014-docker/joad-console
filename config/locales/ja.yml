@@ -54,7 +54,7 @@ ja:
       created: '作成日時'
       state: '稼動状態'
       env: '環境変数'
+      process: 'プロセス一覧'
   container_detail:
     header: 'コンテナ詳細'
     title: 'コンテナ詳細'
-    process: 'プロセス一覧'
