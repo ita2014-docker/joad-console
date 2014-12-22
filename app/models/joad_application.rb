@@ -55,6 +55,6 @@ class JoadApplication
 
   def build_log
     console_output = JoadApplication.client.job.get_console_output(@name, @build_number)
-    console_output['output']
+    console_output['output'] if console_output
   end
 end
