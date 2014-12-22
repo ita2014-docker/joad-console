@@ -5,6 +5,7 @@ en:
     stop: 'Stop'
     delete: 'Delete'
     detail: 'Detail'
+    build: 'Build'
     cancel: 'Cancel'
   joad:
     title: 'Joad Console'

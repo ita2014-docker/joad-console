@@ -5,6 +5,9 @@
 
   <ul class="list-inline">
     <li>
+      <%= button_to t('button.build'), applications_build_path, method: :post, class: "btn btn-primary" %>
+    </li>
+    <li>
       <%= button_to t('button.start'), applications_start_path, method: :post, class: "btn btn-primary" %>
     </li>
   </ul>

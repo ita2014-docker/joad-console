@@ -6,6 +6,7 @@ JoadConsole::Application.routes.draw do
     get 'applications/:name' => :show, as: :applications_show
     post 'applications/create' => :create, as: :applications_create
     post 'applications/:name/start' => :start, as: :applications_start
+    post 'applications/:name/build' => :build, as: :applications_build
   end
 
   controller :containers do

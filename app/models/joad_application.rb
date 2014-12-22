@@ -47,4 +47,8 @@ class JoadApplication
   def create(config_xml)
     JoadApplication.client.job.create(@name, config_xml)
   end
+
+  def build
+    JoadApplication.client.job.build(@name)
+  end
 end

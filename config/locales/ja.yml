@@ -5,6 +5,7 @@ ja:
     stop: '停止'
     delete: '削除'
     detail: '詳細'
+    build: 'ビルド'
     cancel: 'キャンセル'
   joad:
     title: 'Joad Console'
