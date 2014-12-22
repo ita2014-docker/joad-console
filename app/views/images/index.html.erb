@@ -15,6 +15,7 @@
   <table class="table table-striped">
     <thead>
       <tr>
+        <th></th>
         <th><%= t('image.column.id') %></th>
         <th><%= t('image.column.repository') %></th>
         <th><%= t('image.column.tag') %></th>
@@ -28,6 +29,7 @@
       <%- @images.each do |image| %>
         <%- image.repo_tags.each do |rt| %>
       <tr>
+        <td><span class="glyphicon glyphicon-picture" aria-hidden="true"></span></td>
         <td><%= image.short_id %></td>
         <td><%= rt[:repo] %></td>
         <td><%= rt[:tag] %></td>
