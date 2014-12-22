@@ -1,5 +1,5 @@
 module ApplicationsHelper
-  def application_status_icon(status)
+  def build_status_icon(status)
     case status
     when 'success'
       '<span class="text-success glyphicon glyphicon-ok" aria-hidden="true"></span>'

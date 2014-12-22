@@ -4,6 +4,10 @@ class ApplicationsController < ApplicationController
     @apps = JoadApplication.all
   end
 
+  def show
+    @application = JoadApplication.get(params[:name])
+  end
+
   def create
     @new_app = JoadApplication.new(joad_application_params)
     config = render_to_string('config.xml')

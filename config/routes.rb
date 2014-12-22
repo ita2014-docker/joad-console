@@ -3,6 +3,7 @@ JoadConsole::Application.routes.draw do
 
   controller :applications do
     get 'applications' => :index, as: :applications_index
+    get 'applications/:name' => :show, as: :applications_show
     post 'applications/create' => :create, as: :applications_create
     post 'applications/:name/start' => :start, as: :applications_start
   end

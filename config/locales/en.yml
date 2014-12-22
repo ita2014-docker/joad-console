@@ -19,8 +19,17 @@ en:
       description: 'Description'
       repository_url: 'Repository URL'
       last_build: 'Last Builded'
+      build_status: 'Build Status'
     dialog:
       add: 'Add New Application'
+    build_status:
+      success: 'Success'
+      failure: 'Failure'
+      unstable: 'Unstable'
+      running: 'Running'
+      not_run: 'Not Run'
+      aborted: 'Aborted'
+      invalid: 'Invalid'
   image:
     header: 'Image'
     title: 'Images'

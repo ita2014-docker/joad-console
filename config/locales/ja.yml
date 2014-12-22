@@ -19,8 +19,17 @@ ja:
       description: '説明'
       repository_url: 'リポジトリURL'
       last_build: '最終ビルド日時'
+      build_status: 'ビルド状態'
     dialog:
       add: '新しいアプリケーションの追加'
+    build_status:
+      success: '成功'
+      failure: '失敗'
+      unstable: '不安定'
+      running: '実行中'
+      not_run: '未処理'
+      aborted: '中止'
+      invalid: '不正'
   image:
     header: 'イメージ'
     title: 'イメージ一覧'

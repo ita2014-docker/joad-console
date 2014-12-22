@@ -27,12 +27,14 @@
     <tbody>
       <%- @apps.each do |app| %>
       <tr>
-        <td><%= application_status_icon(app.status) %></td>
-        <td><%= app.name %></td>
+        <td><%= build_status_icon(app.build_status) %></td>
+        <td><%= link_to app.name, applications_show_path(app.name) %></td>
         <td><%= app.description %></td>
         <td><%= app.repository_url %></td>
         <td><%= app.last_build %></td>
-        <td><%= button_to t('button.start'), applications_start_path(app.name), method: :post, class: 'btn btn-primary btn-sm' %></td>
+        <td>
+          <%= button_to t('button.start'), applications_start_path(app.name), method: :post, class: 'btn btn-primary btn-sm' %>
+        </td>
       </tr>
       <%- end %>
     </tbody>

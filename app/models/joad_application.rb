@@ -6,7 +6,7 @@ class JoadApplication
   JENKINS_SERVER_IP = ENV['JENKINS_SERVER_IP'] || '172.17.42.1'
   JENKINS_SERVER_PORT = ENV['JENKINS_SERVER_PORT'] || '8080'
 
-  attr_accessor :name, :description, :repository_url, :last_build, :status
+  attr_accessor :name, :description, :repository_url, :last_build, :build_status
 
   class << self
     def client
@@ -16,6 +16,10 @@ class JoadApplication
 
     def all
       client.job.list_all.map {|job_name| convert(job_name) }
+    end
+
+    def get(name)
+      convert(name)
     end
 
     def convert(job_name)
@@ -34,7 +38,7 @@ class JoadApplication
         description: config_xml.css('project description').text,
         repository_url: config_xml.css('project scm url').text,
         last_build: current_build['timestamp'] ? Time.at(current_build['timestamp']/1000) : 'N/A',
-        status: current_build_status
+        build_status: current_build_status
       }
       new(params)
     end
