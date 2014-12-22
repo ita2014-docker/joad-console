@@ -3,7 +3,10 @@ JoadConsole::Application.routes.draw do
 
   controller :applications do
     get 'applications' => :index, as: :applications_index
+    get 'applications/:name' => :show, as: :applications_show
     post 'applications/create' => :create, as: :applications_create
+    post 'applications/:name/start' => :start, as: :applications_start
+    post 'applications/:name/build' => :build, as: :applications_build
   end
 
   controller :containers do
@@ -17,6 +20,6 @@ JoadConsole::Application.routes.draw do
   controller :images do
     get 'images' => :index, as: :images_index
     post 'images/create' => :create, as: :images_create
-    post 'images/:id/create_container' => :create_container, as: :create_container
+    post 'images/:id/create_container' => :create_container, as: :images_create_container
   end
 end

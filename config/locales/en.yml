@@ -5,6 +5,7 @@ en:
     stop: 'Stop'
     delete: 'Delete'
     detail: 'Detail'
+    build: 'Build'
     cancel: 'Cancel'
   joad:
     title: 'Joad Console'
@@ -15,12 +16,26 @@ en:
     header: 'Application'
     title: 'Applications'
     column:
+      build_number: 'Build Number'
       name: 'Name'
       description: 'Description'
       repository_url: 'Repository URL'
       last_build: 'Last Builded'
+      build_status: 'Build Status'
+      build_log: 'Build Log'
     dialog:
       add: 'Add New Application'
+    build_status:
+      success: 'Success'
+      failure: 'Failure'
+      unstable: 'Unstable'
+      running: 'Running'
+      not_run: 'Not Run'
+      aborted: 'Aborted'
+      invalid: 'Invalid'
+  application_detail:
+    header: 'Application Details'
+    title: 'Application Details'
   image:
     header: 'Image'
     title: 'Images'
@@ -44,7 +59,7 @@ en:
       created: 'Created'
       state: 'Running Status'
       env: 'Environment Variables'
+      process: 'Processes'
   container_detail:
     header: 'Container Details'
     title: 'Container Details'
-    process: 'Processes'

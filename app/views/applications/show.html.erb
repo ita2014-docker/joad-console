@@ -1,0 +1,47 @@
+<%- content_for :title do %><%= t('application.title') %><% end %>
+
+<div class="container">
+  <h2><%= t('application.title') %></h2>
+
+  <ul class="list-inline">
+    <li>
+      <%= button_to t('button.build'), applications_build_path, method: :post, class: "btn btn-primary" %>
+    </li>
+    <li>
+      <%= button_to t('button.start'), applications_start_path, method: :post, class: "btn btn-primary" %>
+    </li>
+  </ul>
+
+  <table class="table table-striped">
+    <tr>
+      <th><%= t('application.column.build_status') %></th>
+      <td>
+        <%= build_status_icon(@application.build_status) %>
+        <%= t("application.build_status." << @application.build_status) %>
+      </td>
+    </tr>
+    <tr>
+      <th><%= t('application.column.build_number') %></th>
+      <td><%= @application.build_number %></td>
+    </tr>
+    <tr>
+      <th><%= t('application.column.name') %></th>
+      <td><%= @application.name %></td>
+    </tr>
+    <tr>
+      <th><%= t('application.column.description') %></th>
+      <td><%= @application.description %></td>
+    </tr>
+    <tr>
+      <th><%= t('application.column.repository_url') %></th>
+      <td><%= @application.repository_url %></td>
+    </tr>
+    <tr>
+      <th><%= t('application.column.last_build') %></th>
+      <td><%= @application.last_build %></td>
+    </tr>
+  </table>
+
+  <h3><%= t('application.column.build_log') %></h3>
+  <pre><%= @application.build_log %></pre>
+</div>

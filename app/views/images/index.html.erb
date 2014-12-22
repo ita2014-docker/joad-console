@@ -33,7 +33,7 @@
         <td><%= rt[:tag] %></td>
         <td><%= number_to_human_size(image.size) %></td>
         <td><%= image.created %></td>
-        <td><%= button_to t('button.start'), create_container_path(image.short_id), method: :post, class: 'btn btn-primary btn-sm' %></td>
+        <td><%= button_to t('button.start'), images_create_container_path(image.short_id), method: :post, class: 'btn btn-primary btn-sm' %></td>
       </tr>
         <%- end %>
       <%- end %>
