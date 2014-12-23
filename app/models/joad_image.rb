@@ -3,24 +3,26 @@ require 'docker'
 class JoadImage
   include ActiveModel::Model
 
-  attr_accessor :id, :size, :created, :repo_tags
+  attr_accessor :repository, :tag, :id, :size, :created
 
   class << self
     def all
-      Docker::Image.all.map {|i| convert(i) }
+      images = Docker::Image.all.map {|i| convert(i) }
+      images.flatten.sort_by {|i| [i.repository, i.tag] }
     end
 
     def convert(docker_image)
-      params = {
-        id: docker_image.id,
-        size: docker_image.info['VirtualSize'],
-        created: Time.at(docker_image.info['Created']),
-        repo_tags: docker_image.info['RepoTags'].map do |rt|
-          repo, tag = rt.split(':')
-          { repo: repo, tag: tag }
-        end
-      }
-      new(params)
+      docker_image.info['RepoTags'].map do |rt|
+        repository, tag = rt.split(':')
+        params = {
+          repository: repository,
+          tag: tag,
+          id: docker_image.id,
+          size: docker_image.info['VirtualSize'],
+          created: Time.at(docker_image.info['Created'])
+        }
+        new(params)
+      end
     end
   end
 
@@ -29,10 +31,10 @@ class JoadImage
   end
 
   def create
-    @repo_tags.each do |rt|
-      Thread.new do
-        Docker::Image.create(fromImage: rt)
-      end
-    end if @repo_tags
+    @tag = 'latest' if @tag.nil? or @tag.empty?
+    repo_tag = "#{@repository}:#{@tag}"
+    Thread.new do
+      Docker::Image.create(fromImage: repo_tag)
+    end
   end
 end

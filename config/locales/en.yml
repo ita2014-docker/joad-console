@@ -3,7 +3,7 @@ en:
     add: 'Add'
     start: 'Start'
     stop: 'Stop'
-    delete: 'Delete'
+    remove: 'Remove'
     detail: 'Detail'
     build: 'Build'
     cancel: 'Cancel'
@@ -45,8 +45,14 @@ en:
       tag: 'Tag'
       size: 'Size'
       created: 'Created'
+      command: 'Command'
+      env: 'Environment Variables'
+      exposed_ports: 'Exposed Ports'
     dialog:
       add: 'Add New Image'
+  image_detail:
+    header: 'Image Details'
+    title: 'Image Details'
   container:
     header: 'Container'
     title: 'Containers'

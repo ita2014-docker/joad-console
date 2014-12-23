@@ -4,14 +4,25 @@ class ImagesController < ApplicationController
     @images = JoadImage.all
   end
 
+  def show
+    @image = JoadImageDetail.get(params[:repository], params[:tag])
+  end
+
   def create
     i = JoadImage.new(joad_image_params)
     i.create
     redirect_to images_index_path
   end
 
+  def remove
+    i = JoadImageDetail.get(params[:repository], params[:tag])
+    i.remove
+    redirect_to images_index_path
+  end
+
   def create_container
-    c = JoadContainerDetail.new({image: params[:id]})
+    repo_tag = "#{params[:repository]}:#{params[:tag]}"
+    c = JoadContainerDetail.new({image: repo_tag})
     c.create
     redirect_to containers_index_path
   end
@@ -19,6 +30,6 @@ class ImagesController < ApplicationController
   private
 
   def joad_image_params
-    params.require(:joad_image).permit(:repo_tags => [])
+    params.require(:joad_image).permit(:repository, :tag)
   end
 end

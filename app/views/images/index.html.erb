@@ -27,17 +27,15 @@
 
     <tbody>
       <%- @images.each do |image| %>
-        <%- image.repo_tags.each do |rt| %>
       <tr>
         <td><span class="glyphicon glyphicon-picture" aria-hidden="true"></span></td>
-        <td><%= image.short_id %></td>
-        <td><%= rt[:repo] %></td>
-        <td><%= rt[:tag] %></td>
+        <td><%= link_to image.short_id, images_show_path(repository: u(image.repository), tag: u(image.tag)) %></td>
+        <td><%= image.repository %></td>
+        <td><%= image.tag %></td>
         <td><%= number_to_human_size(image.size) %></td>
         <td><%= image.created %></td>
-        <td><%= button_to t('button.start'), images_create_container_path(image.short_id), method: :post, class: 'btn btn-primary btn-sm' %></td>
+        <td><%= button_to t('button.start'), images_create_container_path(repository: u(image.repository), tag: u(image.tag)), method: :post, class: 'btn btn-primary btn-sm' %></td>
       </tr>
-        <%- end %>
       <%- end %>
     </tbody>
   </table>
