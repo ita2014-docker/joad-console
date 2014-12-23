@@ -3,6 +3,12 @@
 <div class="container">
   <h2><%= t('image_detail.title') %></h2>
 
+  <ul class="list-inline">
+    <li>
+      <%= button_to t('button.start'), images_create_container_path(repository: @image.repository, tag: @image.tag), method: :post, class: "btn btn-primary" %>
+    </li>
+  </ul>
+
   <table class="table table-striped">
     <tr>
       <th><%= t('image.column.id') %></th>
