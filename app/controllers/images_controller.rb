@@ -14,6 +14,12 @@ class ImagesController < ApplicationController
     redirect_to images_index_path
   end
 
+  def remove
+    i = JoadImageDetail.get(params[:repository], params[:tag])
+    i.remove
+    redirect_to images_index_path
+  end
+
   def create_container
     repo_tag = "#{params[:repository]}:#{params[:tag]}"
     c = JoadContainerDetail.new({image: repo_tag})

@@ -22,5 +22,6 @@ JoadConsole::Application.routes.draw do
     get 'images/:repository/:tag' => :show, as: :images_show
     post 'images/create' => :create, as: :images_create
     post 'images/:repository/:tag/create_container' => :create_container, as: :images_create_container
+    delete 'images/:repository/:tag/remove' => :remove, as: :images_remove
   end
 end

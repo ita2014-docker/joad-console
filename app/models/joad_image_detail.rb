@@ -3,7 +3,7 @@ require 'docker'
 class JoadImageDetail
   include ActiveModel::Model
 
-  attr_accessor :repository, :tag, :id, :command, :env, :exposed_ports, :size, :created
+  attr_accessor :origin, :repository, :tag, :id, :command, :env, :exposed_ports, :size, :created
 
   class << self
     def get(repository, tag)
@@ -16,6 +16,7 @@ class JoadImageDetail
 
     def convert(docker_image)
       params = {
+        origin: docker_image,
         id: docker_image.id,
         command: docker_image.info['Config']['Cmd'],
         env: docker_image.info['Config']['Env'],
@@ -29,5 +30,10 @@ class JoadImageDetail
 
   def short_id
     @id[0...12]
+  end
+
+  def remove
+    repo_tag = "#{repository}:#{tag}"
+    @origin.remove(name: repo_tag, force: true)
   end
 end
