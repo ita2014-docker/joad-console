@@ -3,7 +3,7 @@ en:
     add: 'Add'
     start: 'Start'
     stop: 'Stop'
-    delete: 'Delete'
+    remove: 'Remove'
     detail: 'Detail'
     build: 'Build'
     cancel: 'Cancel'
