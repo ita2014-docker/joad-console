@@ -45,8 +45,14 @@ ja:
       tag: 'タグ'
       size: 'サイズ'
       created: '作成日時'
+      command: 'コマンド'
+      env: '環境変数'
+      exposed_ports: '公開ポート'
     dialog:
       add: '新しいイメージの追加'
+  image_detail:
+    header: 'イメージ詳細'
+    title: 'イメージ詳細'
   container:
     header: 'コンテナ'
     title: 'コンテナ一覧'

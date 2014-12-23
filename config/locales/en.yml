@@ -45,8 +45,14 @@ en:
       tag: 'Tag'
       size: 'Size'
       created: 'Created'
+      command: 'Command'
+      env: 'Environment Variables'
+      exposed_ports: 'Exposed Ports'
     dialog:
       add: 'Add New Image'
+  image_detail:
+    header: 'Image Details'
+    title: 'Image Details'
   container:
     header: 'Container'
     title: 'Containers'

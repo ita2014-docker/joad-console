@@ -19,6 +19,7 @@ JoadConsole::Application.routes.draw do
 
   controller :images do
     get 'images' => :index, as: :images_index
+    get 'images/:repository/:tag' => :show, as: :images_show
     post 'images/create' => :create, as: :images_create
     post 'images/:id/create_container' => :create_container, as: :images_create_container
   end

@@ -1,0 +1,40 @@
+<%- content_for :title do %><%= t('image_detail.title') %><% end %>
+
+<div class="container">
+  <h2><%= t('image_detail.title') %></h2>
+
+  <table class="table table-striped">
+    <tr>
+      <th><%= t('image.column.id') %></th>
+      <td><%= @image.id %></td>
+    </tr>
+    <tr>
+      <th><%= t('image.column.repository') %></th>
+      <td><%= @image.repository %></td>
+    </tr>
+    <tr>
+      <th><%= t('image.column.tag') %></th>
+      <td><%= @image.tag %></td>
+    </tr>
+    <tr>
+      <th><%= t('image.column.command') %></th>
+      <td><%= @image.command %></td>
+    </tr>
+    <tr>
+      <th><%= t('image.column.env') %></th>
+      <td><%= @image.env %></td>
+    </tr>
+    <tr>
+      <th><%= t('image.column.exposed_ports') %></th>
+      <td><%= @image.exposed_ports %></td>
+    </tr>
+    <tr>
+      <th><%= t('image.column.size') %></th>
+      <td><%= number_to_human_size(@image.size) %></td>
+    </tr>
+    <tr>
+      <th><%= t('image.column.created') %></th>
+      <td><%= @image.created %></td>
+    </tr>
+  </table>
+</div>

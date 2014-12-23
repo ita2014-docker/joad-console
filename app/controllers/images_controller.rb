@@ -4,6 +4,10 @@ class ImagesController < ApplicationController
     @images = JoadImage.all
   end
 
+  def show
+    @image = JoadImageDetail.get(params[:repository], params[:tag])
+  end
+
   def create
     i = JoadImage.new(joad_image_params)
     i.create
