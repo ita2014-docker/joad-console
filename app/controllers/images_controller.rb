@@ -23,6 +23,6 @@ class ImagesController < ApplicationController
   private
 
   def joad_image_params
-    params.require(:joad_image).permit(:repo_tags => [])
+    params.require(:joad_image).permit(:repository, :tag)
   end
 end
