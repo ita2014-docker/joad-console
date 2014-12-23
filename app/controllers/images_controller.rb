@@ -15,7 +15,8 @@ class ImagesController < ApplicationController
   end
 
   def create_container
-    c = JoadContainerDetail.new({image: params[:id]})
+    repo_tag = "#{params[:repository]}:#{params[:tag]}"
+    c = JoadContainerDetail.new({image: repo_tag})
     c.create
     redirect_to containers_index_path
   end

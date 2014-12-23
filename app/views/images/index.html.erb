@@ -34,7 +34,7 @@
         <td><%= image.tag %></td>
         <td><%= number_to_human_size(image.size) %></td>
         <td><%= image.created %></td>
-        <td><%= button_to t('button.start'), images_create_container_path(image.short_id), method: :post, class: 'btn btn-primary btn-sm' %></td>
+        <td><%= button_to t('button.start'), images_create_container_path(repository: u(image.repository), tag: u(image.tag)), method: :post, class: 'btn btn-primary btn-sm' %></td>
       </tr>
       <%- end %>
     </tbody>
