@@ -12,7 +12,9 @@ class JoadImage
     end
 
     def convert(docker_image)
-      docker_image.info['RepoTags'].map do |rt|
+      repo_tags = docker_image.info['RepoTags']
+      repo_tags.delete('<none>:<none>')
+      repo_tags.map do |rt|
         repository, tag = rt.split(':')
         params = {
           repository: repository,
