@@ -29,12 +29,12 @@
       <%- @images.each do |image| %>
       <tr>
         <td><span class="glyphicon glyphicon-picture" aria-hidden="true"></span></td>
-        <td><%= link_to image.short_id, images_show_path(repository: u(image.repository), tag: u(image.tag)) %></td>
+        <td><%= link_to image.short_id, images_show_path(id: image.short_id, repository: image.repository, tag: image.tag) %></td>
         <td><%= image.repository %></td>
         <td><%= image.tag %></td>
         <td><%= number_to_human_size(image.size) %></td>
         <td><%= image.created %></td>
-        <td><%= button_to t('button.start'), images_create_container_path(repository: u(image.repository), tag: u(image.tag)), method: :post, class: 'btn btn-primary btn-sm' %></td>
+        <td><%= button_to t('button.start'), images_create_container_path(id: image.short_id, repository: image.repository, tag: image.tag), method: :post, class: 'btn btn-primary btn-sm' %></td>
       </tr>
       <%- end %>
     </tbody>
