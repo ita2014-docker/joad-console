@@ -10,7 +10,7 @@
   </logRotator>
   <keepDependencies>false</keepDependencies>
   <properties/>
-  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.3.1">
+  <scm class="hudson.plugins.git.GitSCM" plugin="git">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
@@ -31,19 +31,15 @@
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers>
-    <com.cloudbees.jenkins.GitHubPushTrigger plugin="github@1.10">
+    <com.cloudbees.jenkins.GitHubPushTrigger plugin="github">
       <spec></spec>
     </com.cloudbees.jenkins.GitHubPushTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
-    <org.jenkinsci.plugins.dockerbuildstep.DockerBuilder plugin="docker-build-step@1.16">
-      <dockerCmd class="org.jenkinsci.plugins.dockerbuildstep.cmd.CreateImageCommand">
-        <dockerFolder>$WORKSPACE</dockerFolder>
-        <imageTag>$JOB_NAME:latest</imageTag>
-        <noCache>false</noCache>
-      </dockerCmd>
-    </org.jenkinsci.plugins.dockerbuildstep.DockerBuilder>
+    <hudson.tasks.Shell>
+      <command>docker build -t ${JOB_NAME} .</command>
+    </hudson.tasks.Shell>
   </builders>
   <publishers/>
   <buildWrappers/>
